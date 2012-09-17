@@ -1,0 +1,48 @@
+body 		{	
+		     background-color: #F7F8FF  ;
+		     font-family: Arial;
+		    background-image:url('../img/HelloWorldSmall.jpg');
+		}
+.card {
+			-moz-box-shadow: -5px -5px 5px 5px #888;
+			-webkit-box-shadow: -5px -5px 5px 5px#888;
+			box-shadow: -5px -5px 5px 5px #888;
+			background-color:white;	
+			height:522px;
+			width:913px;
+		    position: absolute;
+	        left:100px;
+			top:45px;
+			z-index: 1000;
+}
+
+.logoContainer{
+			float:left;
+			line-height: 515px;
+			line-width:400px;
+}
+.contentContainer{
+			float:left;
+			height: 515px;
+			width:500px;
+}
+.cardName    	{
+				font-family: Arial ;
+				font-size: 24pt;
+				text-decoration:bold;
+
+			}
+.cardTitle    	{
+				font-family: Arial ;
+				font-size: 16pt;
+				
+				}
+.cardAddress   	{
+				font-family: Arial ;
+				font-size: 15pt;	
+			text-decoration:bold;
+			}
+p 	{font-family: Arial ;
+				font-size: 11pt;
+			
+}
