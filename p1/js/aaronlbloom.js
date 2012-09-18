@@ -10,9 +10,4 @@
 							show: "blind",
 							hide: "explode"
 						});
-				
-						$( "#opener" ).click(function() {
-							$( "#dialog" ).dialog( "open" );
-							return false;
-						});
-					});
+					}
