@@ -10,4 +10,4 @@
 							show: "blind",
 							hide: "explode"
 						});
-					}
+					});	
