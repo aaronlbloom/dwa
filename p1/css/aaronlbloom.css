@@ -3,6 +3,10 @@ body 		{
 		     font-family: Arial;
 		    background-image:url('../img/HelloWorldSmallBlue.jpg');
 		}
+p 	{
+			font-family: Calibri ;
+			font-size: 11pt;	
+}
 .card {
 			-moz-box-shadow: -5px -5px 5px 5px #888;
 			-webkit-box-shadow: -5px -5px 5px 5px#888;
@@ -15,39 +19,45 @@ body 		{
 			top:45px;
 			z-index: 1000;
 }
-.logoContainer{
+#logoContainer{
 			float:left;			
 			padding:20px;
 		    text-align:center;
 			width:300px;
 }
-.contentContainer{
+#idContainer{
 			float:left;
 			height: 515px;
 			width:560px;
 }
-.cardName    	{
+#cardName    	{
 			font-family: Calibri ;
 			font-size: 42pt;
 			text-decoration:bold;
+			padding-top:10px;
+			padding-bottom:10px;
 			}
 .cardTitle    	{
 			font-family: Arial ;
 			font-size: 22pt;
 			text-decoration:bold;
 				}
-.cardAddress   	{
-				font-family: Arial ;
-				font-size: 15pt;	
+#cardStuff   	{
+			font-family: Arial ;
+			font-size: 15pt;	
 			}
-p 	{
-			font-family: Calibri ;
-			font-size: 11pt;
-			
-}
-.label	{
+#label	{
 			font-family: Comic Sans MS ;
 			font-size: 14pt;
 			text-decoration:bold;
-			
+			padding-top:20px;		
+}
+#mepic	{
+		width:300px;
+		height:400px;
+}
+#homebutton	{
+			float:right;
+			width:75px; 
+			height:70px;
 }
