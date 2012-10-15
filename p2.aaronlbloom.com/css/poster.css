@@ -1,0 +1,100 @@
+/* Started with class example daily kitteh a template*/
+#wrapper {
+	width: 900px;
+	border: 0px solid black;
+}
+#header {
+	width: 900px;
+	text-align: center;
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	color: brown;
+	background-color: white;
+	padding: 5px;
+}
+#title {
+	font-size: 80px;
+}
+#tagline {
+	font-size: 15px;
+}
+
+body {
+	/* background image from: http://paper-backgrounds.com/*/
+	background-image: url('../img/brown_paper.jpg');
+}
+
+.roundedbox {
+	border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 30px;
+}
+
+#left {
+	text-align: left;
+	width: 200px;
+	float: left;
+	background-color: white;
+}
+
+#right {
+	text-align: center;
+	width: 600px;
+	float: right;
+	background-color: white;
+	padding: 0px;
+}
+bold {
+	font-weight: bold;
+}
+#posttitle {
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	color: brown;
+	font-size: 25px;
+	text-align: left;
+}
+.post {
+	width: 95%;
+	border-bottom: 1px solid black;
+	float: left;
+	text-align: left;
+	font-family: Arial;
+	padding: 10px;
+}
+.postName {
+	float: left;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 20px;
+}
+.postUser {
+	float: left;
+	font-weight: 100;
+	font-size: 20px;
+	font-family:"Edwardian Script ITC";
+}
+.postDate {
+	float: right;
+	font-weight:100;
+	font-size: 18px;
+	font-family:"Edwardian Script ITC";
+}
+.postMessage {
+	font-weight: 500;
+	font-size: 15px;
+	float: left;
+}
+#inputPost {
+	width: 85%;
+	color: blue;
+}
+
+#footer {
+	clear: both;
+}
