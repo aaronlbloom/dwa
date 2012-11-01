@@ -7,19 +7,7 @@ class users_controller extends base_controller {
 	  
 		
 	}
-	public function status() {
-		#check db access	
-			echo "Check DB Access: ";
-			$q     = "select count(*) from users";		
-		
-			$users = DB::instance(DB_NAME)->select_field($q);	
-			echo "<br>";
-			echo "connecting to users table... ";
-			echo "usres found: ";
-			echo $users;
-			echo "<br>";
-			
-	}
+
 	
 	 
 	public function index() {

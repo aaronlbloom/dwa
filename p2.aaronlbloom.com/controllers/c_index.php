@@ -39,6 +39,20 @@ class index_controller extends base_controller {
 		echo $this->template;
 	}
 	
+		public function status() {
+		#check db access	
+			echo "Check DB Access: ";
+			$q     = "select count(*) from users";		
+		
+			$users = DB::instance(DB_NAME)->select_field($q);	
+			echo "<br>";
+			echo "connecting to users table... ";
+			echo "usres found: ";
+			echo $users;
+			echo "<br>";
+			
+	}
+	
 	
 	
 		
