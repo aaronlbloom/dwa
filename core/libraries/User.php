@@ -23,9 +23,11 @@ class User {
 		# If we have one, load that user
 		if(!empty($token)) {
 			return $this->__load_user($token); 
+			 
 		}
 		
 		# Otherwise, return false, they're not logged in
+		 
 		return false;
 
 	}
@@ -41,8 +43,7 @@ class User {
 						
 			# Load user from DB
 				$q = "SELECT *
-					FROM users
-					WHERE token = '".$token."'
+					FROM users WHERE token = '".$token."'
 					LIMIT 1";	
 					
 				$this->_user = DB::instance(DB_NAME)->select_row($q, "object");

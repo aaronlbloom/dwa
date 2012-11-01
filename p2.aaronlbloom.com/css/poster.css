@@ -3,6 +3,14 @@
 	width: 900px;
 	border: 0px solid black;
 }
+#side_wrapper{
+	 
+	text-align: left;
+	width: 210px;
+	float: left;
+ 
+ 
+}
 #header {
 	width: 900px;
 	text-align: center;
@@ -10,13 +18,31 @@
 	font-weight: bold;
 	color: brown;
 	background-color: white;
-	padding: 5px;
+	padding:1px;
 }
 #title {
-	font-size: 80px;
+	font-size: 75px;
 }
-#tagline {
-	font-size: 15px;
+.tagline {
+	color: brown;
+	font-size: 14px;
+	padding:5px;
+	border-bottom: 1px solid black;
+}
+#logout{
+	color: brown;
+	float:right;	
+	padding:5px;
+}
+#searchPost {
+	color: brown;
+	float:left;
+	text-align: left;
+	width: 80%;
+	padding:5px;
+	padding-right: 25px;
+	padding-left:25px;
+	
 }
 
 body {
@@ -59,6 +85,47 @@ bold {
 	font-size: 25px;
 	text-align: left;
 }
+.profileLabel {
+	float: left;
+	text-align: left;
+	 
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 20px;
+	width:200px;
+	height:21px;
+	padding-left:5px;
+	 	
+	 
+}
+.profileInput {
+	color: blue;
+	 
+	float:right;
+	text-align: left;
+	width:370px;
+	height:19px;
+	  
+	
+}
+.profile{
+	 
+	float: left;
+	padding-top:5px;
+	padding-bottom: 10px;
+}
+.bioAvatar {
+	 
+	height: 75px;
+	widows: 75px;
+	 
+}
+.label {
+	text-align: left;
+	float:left;
+	font-family: Arial;
+	padding: 4px;
+}
 .post {
 	width: 95%;
 	border-bottom: 1px solid black;
@@ -67,11 +134,20 @@ bold {
 	font-family: Arial;
 	padding: 10px;
 }
+
+.postAvatar {
+	float: left;
+	height: 22px;
+	width: 22px;
+	padding-right: 5px;
+}
 .postName {
 	float: left;
 	font-family: Arial;
 	font-weight: bold;
 	font-size: 20px;
+	padding-right: 5px;
+	 
 }
 .postUser {
 	float: left;
@@ -88,7 +164,7 @@ bold {
 .postMessage {
 	font-weight: 500;
 	font-size: 15px;
-	float: left;
+	--float: left;
 }
 #inputPost {
 	width: 85%;
@@ -96,5 +172,6 @@ bold {
 }
 
 #footer {
+	text-align: left;
 	clear: both;
 }

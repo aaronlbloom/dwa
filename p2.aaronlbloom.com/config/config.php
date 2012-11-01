@@ -8,18 +8,18 @@ For example there's a constant in core config set for TIME_FORMAT
 	if(!defined('TIME_FORMAT')) define('TIME_FORMAT', 'F j, Y g:ia'); 
 
 If you want a different default time format for this app, set it below
-
-	define('TIME_FORMAT', 'M j Y'); 
-
 */
+
+	define('TIME_FORMAT', 'M j, Y g:ia'); 
+
 
 
 # What is the name of this app?
-	define('APP_NAME', 'My App');  
+	define('APP_NAME', 'Post-er');  
 
 # When email is sent out from the server, where should it come from?
 # Ideally, this should match the domain name
-	define('APP_EMAIL', 'webmaster@myapp.com'); 
+	define('APP_EMAIL', 'aaronlbloom@gmail.com'); 
 
 /* 
 A email designated to receive messages from the server. Examples:
@@ -29,11 +29,11 @@ A email designated to receive messages from the server. Examples:
  	
  	Some might want this to be the same as the APP_EMAIL, others might want to create a designated gmail address for it
 */ 	
-	define('SYSTEM_EMAIL', 'webmaster@myapp.com'); 
+	define('SYSTEM_EMAIL', 'aaronlbloom@gmail.com'); 
 
 # Default DB name for this app
-	define('DB', "myapp_com"); 
-
+	define('DB_NAME', "aaronlbl_p2_aaronlbloom_com"); 
+ 
 
 # If your app is going to have outgoing emails, you should fill in your SMTP settings
 # For this you could use gmail SMTP or something like http://sendgrid.com/
