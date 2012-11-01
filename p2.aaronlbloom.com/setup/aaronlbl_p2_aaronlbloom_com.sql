@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 01, 2012 at 02:27 AM
+-- Generation Time: Nov 01, 2012 at 12:50 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `hashtags` (
   `hashtag` varchar(140) NOT NULL,
   `post_id` int(11) NOT NULL COMMENT 'fk joins to a post this hashtag is used on',
   PRIMARY KEY (`hashtag_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `hashtags`
@@ -47,7 +47,10 @@ INSERT INTO `hashtags` (`hashtag_id`, `hashtag`, `post_id`) VALUES
 (7, 'force', 11),
 (8, 'hyperspace', 12),
 (9, 'hyperspace', 13),
-(10, 'force', 14);
+(10, 'force', 14),
+(11, 'badfeeling', 15),
+(12, 'badfeeling', 16),
+(13, 'only', 17);
 
 -- --------------------------------------------------------
 
@@ -90,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `reply_to` int(11) NOT NULL COMMENT 'user_id of who post is to, if it is a reply',
   PRIMARY KEY (`post_id`),
   KEY `post` (`post`(255))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `posts`
@@ -108,7 +111,11 @@ INSERT INTO `posts` (`post_id`, `post`, `created`, `modified`, `poster`, `reply_
 (10, 'You will never find a more wretched hive of scum and villainy #<a href=''/posts/hash?input=moseisley''>moseisley</a>', 1351736280, 1351736280, 4, 0),
 (11, ' I warn you not to underestimate my power. #<a href=''/posts/hash?input=force''>force</a>', 1351736474, 1351736474, 1, 0),
 (13, 'Traveling through #<a href=''/posts/hash?input=hyperspace''>hyperspace</a> ain''t like dusting crops', 1351736586, 1351736586, 2, 0),
-(14, 'Hey, @<a href=''/posts/mentions?input=lskywalker''>lskywalker</a> May the Force be with you #<a href=''/posts/hash?input=force''>force</a>', 1351736729, 1351736729, 2, 1);
+(14, 'Hey, @<a href=''/posts/mentions?input=lskywalker''>lskywalker</a> May the Force be with you #<a href=''/posts/hash?input=force''>force</a>', 1351736729, 1351736729, 2, 1),
+(15, 'Just heard we were bought by disney! WTF! #<a href=''/posts/hash?input=badfeeling''>badfeeling</a>', 1351774107, 1351774107, 4, 0),
+(16, 'wait, what the heck is a jar jar? #<a href=''/posts/hash?input=badfeeling''>badfeeling</a>', 1351774137, 1351774137, 1, 0),
+(17, 'help us Micky Mouse, you''re our <a href=''/posts/hash?input=only''>only</a> hope #<a href=''/posts/hash?input=only''>only</a> hope', 1351774160, 1351774160, 3, 0),
+(18, 'That''s no moon, that''s Disney World! ', 1351774200, 1351774200, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -138,10 +145,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `user_name`, `last_name`, `first_name`, `token`, `password`, `country`, `timezone`, `website`, `bio`, `created`, `modified`) VALUES
-(1, 'lskywalker@swu.com', 'lskywalker', 'Skywalker ', 'Luke', 'cb96e6795bddb7917f56eb852835f6a2f8797676', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'new hope', 1351735492, 1351736412),
+(1, 'lskywalker@swu.com', 'lskywalker', 'Skywalker ', 'Luke', '6ef67e6ef41a03358e819303cf717fd32844bb9b', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'new hope', 1351735492, 1351736412),
 (2, 'hsolo@swu.com', 'hsolo', 'Solo ', 'Han', 'cbed7e2e868a4915a8df6396ef29e91075802395', '590a91fc8af43321003acebcbbbda395941c0e4b', '', NULL, '', 'Made the Kessel Run in less than twelve parsecs. Surely you''ve heard of me.', 1351735717, 1351736672),
-(3, 'plea@swu.com', 'plea', 'Lea ', 'Princess', 'f05d9358db04b69bb9cd444ba6320d4ea32d289e', '590a91fc8af43321003acebcbbbda395941c0e4b', '(formerly) alderaan', NULL, '', 'kick-ass rebel princess', 1351735815, 1351736373),
-(4, 'okenobi@swu.com', 'okenobi', 'Kenobi  ', 'Obi-Wan', 'b76bd3444479fda9138e5efb8494362b5d636e3a', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'jedi, retired', 1351735929, 1351736324);
+(3, 'plea@swu.com', 'plea', 'Lea ', 'Princess', '764590124a8d2b1c384ffd85ce2694814d4ca362', '590a91fc8af43321003acebcbbbda395941c0e4b', '(formerly) alderaan', NULL, '', 'kick-ass rebel princess', 1351735815, 1351736373),
+(4, 'okenobi@swu.com', 'okenobi', 'Kenobi  ', 'Obi-Wan', '6cec91c44334b111a08411591c0d93949f6b2309', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'jedi, retired', 1351735929, 1351736324);
 
 -- --------------------------------------------------------
 
