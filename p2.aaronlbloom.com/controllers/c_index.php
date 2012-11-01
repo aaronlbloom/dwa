@@ -28,10 +28,12 @@ class index_controller extends base_controller {
 		# Render the view
 			echo $this->template;
 			*/
-
+			$q     = "select count(*) from users";		
+			$users = DB::instance(DB_NAME)->select_field($q);	
+			
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
-			$this->template->message = "DBNAME:".DB_NAME;
+			$this->template->message = "DBNAME:".DB_NAME.", found user table count:".$users;
  	   	}else{
  	   					Router::redirect('/users/');
 
