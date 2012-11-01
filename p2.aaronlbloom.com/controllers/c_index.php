@@ -19,16 +19,10 @@ class index_controller extends base_controller {
 			#$this->template->title = "Hello World";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
-			/*$client_files = Array(
-						""
-	                    );
-	    
-	    	$this->template->client_files = Utils::load_client_files($client_files);   
-	      		
-		# Render the view
-			echo $this->template;
-			*/
+	 
 			/*
+		
+			 #Test creating a test user from the index page:
 			$_POST['email'] 			  = "test@test.test";
 			$_POST['password'] 			  = "test";
 			$_POST['password'] 			  = sha1(PASSWORD_SALT.$_POST['password']);
@@ -38,19 +32,23 @@ class index_controller extends base_controller {
 			
 			DB::instance (DB_NAME)->insert('users',$_POST);
 			@setcookie("token", $_POST['token'], strtotime('+2 weeks'), '/');
-			#Router::redirect("/users");
+			#Router::redirect("/users/");
 			
 			 */
 		  
+			$q     = "select count(*) from users";		
+		
+			$users = DB::instance(DB_NAME)->select_field($q);	
 			
 		if(!$this->user){
 		
 			 
 			$this->template->content = View::instance("v_users_login");
-		 
-			 
+		    if(!IN_PRODUCTION){
+		   	 		$this->template->message = "Connecting to DB: ".DB_NAME.", Count of user table: ".$users;
+			}
  	   	}else{
-			   Router::redirect('/users/');
+	  		  Router::redirect('/users/');
 
  	   	}
 		
