@@ -28,12 +28,21 @@ class index_controller extends base_controller {
 		# Render the view
 			echo $this->template;
 			*/
-			$q     = "select count(*) from users";		
-			$users = DB::instance(DB_NAME)->select_field($q);	
-			
+			$q     = "select count(*) from mentions";		
+			$mentions = DB::instance(DB_NAME)->select_field($q);	
+			 
+			 	#store hashtag with reference to this post into the db
+					 			$data = Array(
+									"post_id" => "1",
+									"user_id" => "1"
+								 
+								);
+								# Do the insert
+								DB::instance(DB_NAME)->insert('mentions', $data); 
+		    
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
-			$this->template->message = "DBNAME:".DB_NAME.", found user table count:".$users;
+			$this->template->message = "DBNAME:".DB_NAME.", found mentions table count:".$mentions;
  	   	}else{
  	   					Router::redirect('/users/');
 
