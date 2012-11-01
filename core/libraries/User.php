@@ -19,7 +19,7 @@ class User {
 		
 		# Look for the token cookie
 		$token = @$_COOKIE['token'];
-
+sad
 		# If we have one, load that user
 		if(!empty($token)) {
 			return $this->__load_user($token); 
