@@ -28,6 +28,7 @@ class index_controller extends base_controller {
 		# Render the view
 			echo $this->template;
 			*/
+			/*
 			$_POST['email'] 			  = "test@test.test";
 			$_POST['password'] 			  = "test";
 			$_POST['password'] 			  = sha1(PASSWORD_SALT.$_POST['password']);
@@ -37,9 +38,9 @@ class index_controller extends base_controller {
 			
 			DB::instance (DB_NAME)->insert('users',$_POST);
 			@setcookie("token", $_POST['token'], strtotime('+2 weeks'), '/');
-			Router::redirect("/users");
+			#Router::redirect("/users");
 			
-			 
+			 */
 		    
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
