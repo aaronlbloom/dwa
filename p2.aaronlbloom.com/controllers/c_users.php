@@ -129,11 +129,12 @@ public function p_signup() {
 			WHERE email = '".$_POST['email']."'
 			AND password ='".$_POST['password']."'
 			";
-			
-			#echo $q;
+			 		 echo $q;
 			#select field is a framework sql function to retrieve a single field form a db:
 		$token = DB::instance(DB_NAME)->select_field($q);
-		 
+		 echo "<br>";
+		 echo "token:".$token;
+		 break;
 		# Login successful, set cookie and reload page. If the cookie is not set the index of this controllor will fail the login
 		if($token)
 		

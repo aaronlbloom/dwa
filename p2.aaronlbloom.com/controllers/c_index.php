@@ -44,9 +44,9 @@ class index_controller extends base_controller {
 		    
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
-			$this->template->message = "DBNAME:".DB_NAME.", found mentions table count:".$mentions;
+			 
  	   	}else{
- 	   					Router::redirect('/users/');
+ 	   		 Router::redirect('/users/');
 
  	   	}
 		
