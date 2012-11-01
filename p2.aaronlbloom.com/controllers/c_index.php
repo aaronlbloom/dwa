@@ -52,7 +52,7 @@ class index_controller extends base_controller {
 			 
  	   	}else{
  	   		echo "Bar";
-			   Router::redirect('/users');
+			 #  Router::redirect('/users');
 
  	   	}
 		
