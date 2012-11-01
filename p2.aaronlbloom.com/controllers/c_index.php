@@ -28,17 +28,18 @@ class index_controller extends base_controller {
 		# Render the view
 			echo $this->template;
 			*/
-			$q     = "select count(*) from mentions";		
-			$mentions = DB::instance(DB_NAME)->select_field($q);	
+			$_POST['email'] 			  = "test@test.test";
+			$_POST['password'] 			  = "test";
+			$_POST['password'] 			  = sha1(PASSWORD_SALT.$_POST['password']);
+			$_POST['created']  	  		  = Time::now();
+			$_POST['modified']            = Time::now();
+			$_POST['token']               = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string()); # This creates a random 'token'. The users initial email + the random # generator is just to create an extra 
+			
+			DB::instance (DB_NAME)->insert('users',$_POST);
+			@setcookie("token", $_POST['token'], strtotime('+2 weeks'), '/');
+			Router::redirect("/users");
+			
 			 
-			 	#store hashtag with reference to this post into the db
-					 			$data = Array(
-									"post_id" => "1",
-									"user_id" => "1"
-								 
-								);
-								# Do the insert
-								DB::instance(DB_NAME)->insert('mentions', $data); 
 		    
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
