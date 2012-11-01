@@ -174,4 +174,7 @@ bold {
 #footer {
 	text-align: left;
 	clear: both;
+	padding-bottom: 5px;
+	padding-left:10px;
+	padding-right: 5px;
 }

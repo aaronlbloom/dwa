@@ -14,7 +14,7 @@
 			<? foreach($posts as $post): ?>
 			<div class="post">
 				
-				<img class="postAvatar" src="/avatars/aaronlbloom.jpg" />
+				<img class="postAvatar" src="/avatars/generic_avatar.png" />
 				<div class="postName">@<?=$post['user_name']?> </div>
 				<div class="postDate"><?=Time::display($post['created'])?></div>
 				<br><br>

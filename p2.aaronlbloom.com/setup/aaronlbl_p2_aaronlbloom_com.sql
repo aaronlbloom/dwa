@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 01, 2012 at 12:50 PM
+-- Generation Time: Nov 01, 2012 at 09:06 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -50,7 +50,7 @@ INSERT INTO `hashtags` (`hashtag_id`, `hashtag`, `post_id`) VALUES
 (10, 'force', 14),
 (11, 'badfeeling', 15),
 (12, 'badfeeling', 16),
-(13, 'only', 17);
+(13, 'onlyhope', 17);
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `mentions` (
   `user_id` int(11) NOT NULL COMMENT 'fk joins to user being mentioned',
   `post_id` int(11) NOT NULL COMMENT 'fj joins to post mention is made in',
   PRIMARY KEY (`mention_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `mentions`
@@ -76,7 +76,11 @@ INSERT INTO `mentions` (`mention_id`, `user_id`, `post_id`) VALUES
 (4, 4, 6),
 (5, 4, 7),
 (6, 3, 8),
-(7, 1, 14);
+(7, 1, 14),
+(8, 1, 1),
+(9, 1, 1),
+(10, 1, 1),
+(11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +118,7 @@ INSERT INTO `posts` (`post_id`, `post`, `created`, `modified`, `poster`, `reply_
 (14, 'Hey, @<a href=''/posts/mentions?input=lskywalker''>lskywalker</a> May the Force be with you #<a href=''/posts/hash?input=force''>force</a>', 1351736729, 1351736729, 2, 1),
 (15, 'Just heard we were bought by disney! WTF! #<a href=''/posts/hash?input=badfeeling''>badfeeling</a>', 1351774107, 1351774107, 4, 0),
 (16, 'wait, what the heck is a jar jar? #<a href=''/posts/hash?input=badfeeling''>badfeeling</a>', 1351774137, 1351774137, 1, 0),
-(17, 'help us Micky Mouse, you''re our <a href=''/posts/hash?input=only''>only</a> hope #<a href=''/posts/hash?input=only''>only</a> hope', 1351774160, 1351774160, 3, 0),
+(17, 'help us Micky Mouse, you''re our only hope #<a href=''/posts/hash?input=onlyhope''>onlyhope</a>', 1351774160, 1351774160, 3, 0),
 (18, 'That''s no moon, that''s Disney World! ', 1351774200, 1351774200, 2, 0);
 
 -- --------------------------------------------------------
@@ -138,15 +142,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` int(11) NOT NULL,
   `modified` int(11) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `email`, `user_name`, `last_name`, `first_name`, `token`, `password`, `country`, `timezone`, `website`, `bio`, `created`, `modified`) VALUES
-(1, 'lskywalker@swu.com', 'lskywalker', 'Skywalker ', 'Luke', '6ef67e6ef41a03358e819303cf717fd32844bb9b', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'new hope', 1351735492, 1351736412),
-(2, 'hsolo@swu.com', 'hsolo', 'Solo ', 'Han', 'cbed7e2e868a4915a8df6396ef29e91075802395', '590a91fc8af43321003acebcbbbda395941c0e4b', '', NULL, '', 'Made the Kessel Run in less than twelve parsecs. Surely you''ve heard of me.', 1351735717, 1351736672),
+(1, 'lskywalker@swu.com', 'lskywalker', 'Skywalker ', 'Luke', 'dc28c406bd251d01f4bfa36f984d1b9f6191cb9c', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'new hope', 1351735492, 1351736412),
+(2, 'hsolo@swu.com', 'hsolo', 'Solo ', 'Han', 'bce90849934a9ad0230af02b33833fea88f10820', '590a91fc8af43321003acebcbbbda395941c0e4b', '', NULL, '', 'Made the Kessel Run in less than twelve parsecs. Surely you''ve heard of me.', 1351735717, 1351736672),
 (3, 'plea@swu.com', 'plea', 'Lea ', 'Princess', '764590124a8d2b1c384ffd85ce2694814d4ca362', '590a91fc8af43321003acebcbbbda395941c0e4b', '(formerly) alderaan', NULL, '', 'kick-ass rebel princess', 1351735815, 1351736373),
 (4, 'okenobi@swu.com', 'okenobi', 'Kenobi  ', 'Obi-Wan', '6cec91c44334b111a08411591c0d93949f6b2309', '590a91fc8af43321003acebcbbbda395941c0e4b', 'tatooine', NULL, '', 'jedi, retired', 1351735929, 1351736324);
 
@@ -162,17 +166,17 @@ CREATE TABLE IF NOT EXISTS `users_users` (
   `user_id` int(11) NOT NULL,
   `user_id_followed` int(11) NOT NULL,
   PRIMARY KEY (`user_user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `users_users`
 --
 
 INSERT INTO `users_users` (`user_user_id`, `created`, `user_id`, `user_id_followed`) VALUES
-(1, '0000-00-00', 1, 4),
-(2, '0000-00-00', 1, 2),
 (3, '0000-00-00', 2, 3),
-(4, '0000-00-00', 3, 1);
+(5, '0000-00-00', 1, 4),
+(7, '0000-00-00', 1, 5),
+(12, '0000-00-00', 3, 4);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

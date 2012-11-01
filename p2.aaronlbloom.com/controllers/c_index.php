@@ -44,32 +44,27 @@ class index_controller extends base_controller {
 		
 			 
 			$this->template->content = View::instance("v_users_login");
-		    if(!IN_PRODUCTION){
-		   	 		$this->template->message = "Connecting to DB: ".DB_NAME.", Count of user table: ".$users;
-			}
+		 $this->template->message = "<--------------------First time using post-er, try clicking HELP";
+		 
+				 
  	   	}else{
-	  		  Router::redirect('/users/');
+ 	   		 
+	  		  Router::redirect('/');
 
  	   	}
 		
 		echo $this->template;
 	}
 	
-		public function status() {
-		#check db access	
-			echo "Check DB Access: ";
-			$q     = "select count(*) from users";		
+	public function help(){
+		$this->template->content = View::instance("v_help");
+		$this->template->message 	    = "<a href='/'>Return to Main Page</a>";
+		echo $this->template;
 		
-			$users = DB::instance(DB_NAME)->select_field($q);	
-			echo "<br>";
-			echo "connecting to users table... ";
-			echo "usres found: ";
-			echo $users;
-			echo "<br>";
-			
+		
 	}
-	
-	
-	
+		
+		
+		
 		
 } // end class

@@ -21,7 +21,7 @@ class posts_controller extends base_controller {
 		$this->view_specific($where, $title);
 	}
 
-public function mentions(){
+	public function mentions(){
 	
 		#function called to show a specific list of posts that mention a given user
 		$title = "mentioning user: @";
@@ -31,7 +31,7 @@ public function mentions(){
 		$this->view_specific($where, $title);
 	}
 
-public function view_specific($where=null, $title=null){
+	public function view_specific($where=null, $title=null){
 		#generic routine to show a list of posts for a specific reason	
 		$input = $_GET['input'];
 		if(!$this->user){
@@ -60,7 +60,6 @@ public function view_specific($where=null, $title=null){
 		}
 			echo $this->template;
 	}
-
 
 	public function users(){
 			
