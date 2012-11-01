@@ -4,8 +4,7 @@ class users_controller extends base_controller {
 	
 	public function __construct(){
 		parent::__construct();
-	  
-		
+	 	
 	}
 
 	
@@ -90,12 +89,12 @@ public function p_signup() {
 			";
 
 		 $exists = DB::instance(DB_NAME)->select_field($q);
-		 echo "Count:";
-		 echo $exists;
+		 #echo "Count:";
+		 #echo $exists;
 		
 		 if($exists==0){
 			 
-			echo "In Setup:";
+			#echo "In Setup:";
 					
 			$_POST['password'] 			  = sha1(PASSWORD_SALT.$_POST['password']);
 			$_POST['created']  	  = Time::now();
@@ -107,7 +106,7 @@ public function p_signup() {
 			Router::redirect("/users");
 		 }else{
 		 	
-		 	 echo "In Rediurect:";
+		 	 #echo "In Rediurect:";
 			 $this->template->content = View::instance("v_users_login");	
 			 $this->template->message 	    = "An account already exists with this email or user name, please try again";	
 			 echo $this->template;
@@ -133,8 +132,8 @@ public function p_signup() {
 			 		 echo $q;
 			#select field is a framework sql function to retrieve a single field form a db:
 		 $token = DB::instance(DB_NAME)->select_field($q);
-	 	 echo "<br>";
-		 echo "token:".$token;
+	 	# echo "<br>";
+		# echo "token:".$token;
  			# Login successful, set cookie and reload page. If the cookie is not set the index of this controllor will fail the login
 		  if($token)
 		
