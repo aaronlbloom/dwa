@@ -46,13 +46,13 @@ class index_controller extends base_controller {
 			
 		if(!$this->user){
 			echo "foo";
-			break;
+			 
 			$this->template->content = View::instance("v_users_login");
 			#$this->template->content = View::instance("v_index_index");
 			 
  	   	}else{
  	   		echo "Bar";
-			break;
+			 
 			 	   		 Router::redirect('/users/');
 
  	   	}
