@@ -42,15 +42,15 @@ class index_controller extends base_controller {
 			
 			 */
 		    
-		if(!$this->user){
-			$this->template->content = View::instance("v_users_login");
+		#if(!$this->user){
+		#	$this->template->content = View::instance("v_users_login");
 			 
- 	   	}else{
+ 	   	#}else{
  	   		 Router::redirect('/users/');
 
- 	   	}
+ 	   	#}
 		
-		echo $this->template;
+		#echo $this->template;
 	}
 	
 		public function status() {
