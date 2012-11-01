@@ -43,7 +43,7 @@ class User {
 						
 			# Load user from DB
 				$q = "SELECT *
-					FROM users2 WHERE token = '".$token."'
+					FROM users WHERE token = '".$token."'
 					LIMIT 1";	
 					
 				$this->_user = DB::instance(DB_NAME)->select_row($q, "object");
