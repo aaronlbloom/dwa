@@ -11,7 +11,8 @@ class users_controller extends base_controller {
 	
 	 
 	public function index() {
-	 
+	  echo "here";
+	  break;
 		if(!$this->user){
 		 
 			$this->template->content = View::instance("v_users_login");
@@ -135,7 +136,7 @@ public function p_signup() {
 		$token = DB::instance(DB_NAME)->select_field($q);
 		 echo "<br>";
 		 echo "token:".$token;
- 		# Login successful, set cookie and reload page. If the cookie is not set the index of this controllor will fail the login
+ 			# Login successful, set cookie and reload page. If the cookie is not set the index of this controllor will fail the login
 		if($token)
 		
 			{ 			 
