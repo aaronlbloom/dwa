@@ -11,7 +11,7 @@ class users_controller extends base_controller {
 	
 	 
 	public function index() {
-	  echo "here";
+	  
 	  break;
 		if(!$this->user){
 		 
