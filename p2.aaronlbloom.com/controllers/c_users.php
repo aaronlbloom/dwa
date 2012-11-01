@@ -12,7 +12,7 @@ class users_controller extends base_controller {
 	 
 	public function index() {
 	  
-	  break;
+	 
 		if(!$this->user){
 		 
 			$this->template->content = View::instance("v_users_login");

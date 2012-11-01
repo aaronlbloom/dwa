@@ -41,18 +41,16 @@ class index_controller extends base_controller {
 			#Router::redirect("/users");
 			
 			 */
-		    $this->template->content = View::instance("v_users_login");
-			echo $this->template;
+		  
 			
 		if(!$this->user){
-			echo "foo";
+		
 			 
 			$this->template->content = View::instance("v_users_login");
 			#$this->template->content = View::instance("v_index_index");
 			 
  	   	}else{
- 	   		echo "Bar";
-			 #  Router::redirect('/users');
+			   Router::redirect('/users');
 
  	   	}
 		

@@ -18,8 +18,8 @@ class User {
 	public function authenticate() {
 		
 		# Look for the token cookie
-		#$token = @$_COOKIE['token'];
- 		$token = "6ef67e6ef41a03358e819303cf717fd32844bb9b";
+		$token = @$_COOKIE['token'];
+ 		#$token = "6ef67e6ef41a03358e819303cf717fd32844bb9b";
 		# If we have one, load that user
 		if(!empty($token)) {
 			return $this->__load_user($token); 
