@@ -123,7 +123,7 @@ public function p_signup() {
 	}
 	public function p_login(){
 		print_r($_POST);
-		break;
+	 
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 		$q = "Select token
 			FROM users
@@ -135,8 +135,7 @@ public function p_signup() {
 		$token = DB::instance(DB_NAME)->select_field($q);
 		 echo "<br>";
 		 echo "token:".$token;
-		 break;
-		# Login successful, set cookie and reload page. If the cookie is not set the index of this controllor will fail the login
+ 		# Login successful, set cookie and reload page. If the cookie is not set the index of this controllor will fail the login
 		if($token)
 		
 			{ 			 
