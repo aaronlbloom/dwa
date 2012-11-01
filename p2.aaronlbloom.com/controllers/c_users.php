@@ -16,7 +16,7 @@ class users_controller extends base_controller {
 		 
 			$this->template->content = View::instance("v_users_login");
 			$this->template->message = "Login is invalid, please try again.";
-			#echo $this->template;
+			echo $this->template;
  	   	}else{
  	   		 
  	   		$this->main_page();
@@ -115,9 +115,9 @@ public function p_signup() {
 	}
  
 	public function login(){
-		#echo "display the login page";
+		echo "display the login page";
 		$this->template->content = View::instance("v_users_login");
- 	    echo $this->template;
+ 	    #echo $this->template;
 	 
 	}
 	public function p_login(){
