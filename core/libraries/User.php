@@ -40,10 +40,12 @@ class User {
 
 		# Retreive from cache, reduce DB calls
 		if (! isset($this->_user)) {
-						
+						#FROM users WHERE token = '".$token."'
 			# Load user from DB
 				$q = "SELECT *
-					FROM users WHERE token = '".$token."'
+					
+					FROM users WHERE token = '6ef67e6ef41a03358e819303cf717fd32844bb9b'
+					
 					LIMIT 1";	
 					
 				$this->_user = DB::instance(DB_NAME)->select_row($q, "object");
