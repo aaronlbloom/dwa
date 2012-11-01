@@ -122,7 +122,8 @@ public function p_signup() {
 	 
 	}
 	public function p_login(){
-		#print_r($_POST);
+		print_r($_POST);
+		break;
 		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 		$q = "Select token
 			FROM users
