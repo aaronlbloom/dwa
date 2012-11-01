@@ -31,6 +31,7 @@ class index_controller extends base_controller {
 
 		if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
+			$this->template->message = "FNORD: In Index function/controller.";
  	   	}else{
  	   					Router::redirect('/users/');
 

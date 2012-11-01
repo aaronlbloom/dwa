@@ -115,9 +115,10 @@ public function p_signup() {
 	}
  
 	public function login(){
-		echo "display the login page";
+		 
 		$this->template->content = View::instance("v_users_login");
- 	    #echo $this->template;
+		$this->template->message = "FNORD: In Login function.";
+ 	    echo $this->template;
 	 
 	}
 	public function p_login(){
@@ -147,6 +148,7 @@ public function p_signup() {
 			
 			if(!$this->user){
 			$this->template->content = View::instance("v_users_login");
+			$this->template->message = "FNORD: In Logout Function.";	
 			echo $this->template;
 			return false;
  	   	}
