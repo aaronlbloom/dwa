@@ -7,13 +7,28 @@ class users_controller extends base_controller {
 	  
 		
 	}
+	public function status() {
+		#check db access	
+			echo "Check DB Access: ";
+			$q     = "select count(*) from users";		
+		
+			$users = DB::instance(DB_NAME)->select_field($q);	
+			echo "<br>";
+			echo "connecting to users table... ";
+			echo "usres found: ";
+			echo $users;
+			echo "<br>";
+			
+	}
 	
+	 
 	public function index() {
 	 
 		if(!$this->user){
+		 
 			$this->template->content = View::instance("v_users_login");
 			$this->template->message = "Login is invalid, please try again.";
-			echo $this->template;
+			#echo $this->template;
  	   	}else{
  	   		 
  	   		$this->main_page();
