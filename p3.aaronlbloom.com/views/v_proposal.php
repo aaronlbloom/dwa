@@ -43,6 +43,11 @@
 <br>
 </div>
 <div   class="roundedbox">
+<div id="title"> Scetch:</div>
+	<img src="/img/p3_proposal.jpg" width="700px" height="700px" />
+<br>
+</div>
+<div   class="roundedbox">
 
 <div id="title">Related Ideas:</div>
 <br>
