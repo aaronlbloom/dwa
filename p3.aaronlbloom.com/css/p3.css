@@ -1,15 +1,13 @@
 /* Started with class example daily kitteh a template*/
 
-body {
-  	 
+body { 	 
 	background-color:white;
  }
 #wrapper {
 	width: 900px;
 	border: 0px solid black;
 	vertical-align: center;
-	padding-left: 100px;
-	padding-right:100px;
+	margin: 0px auto;
 }
  
 #header {
