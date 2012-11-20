@@ -13,14 +13,14 @@ class index_controller extends base_controller {
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
-			$this->template->content = View::instance('v_lookup');
+			$this->template->content = View::instance('v_javascript_class1');
 			
 		# Now set the <title> tag
-			$this->template->title = "ISBN Lookup";
+			$this->template->title = "js tests";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
-						"/js/p3.js","/js/convert.js","/css/p3.css"
+						"../js/class1.js"
 	                    );
 	    
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
@@ -30,17 +30,7 @@ class index_controller extends base_controller {
 
 	}
 	
-		public function proposal() {
-
-		$this->template->content = View::instance("v_proposal");
-		$client_files = Array(
-						 "../css/p3.css"
-	                    );
-				$this->template->client_files = Utils::load_client_files($client_files);   
-	      		
-		echo $this->template;
-
-	}
+	
 	
 		
 } // end class

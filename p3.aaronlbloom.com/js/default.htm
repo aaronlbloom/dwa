@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>ISBN-13 Conversion Tool</title>
+<script type="text/javascript" src="convert.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+
+function runISBNconv()
+{
+	// see convert.js for more information
+	
+	var isbn = document.getElementById("isbn_text").value;
+	if (isbn != "")
+	{	
+		document.getElementById("result_text").innerHTML = convertISBN(isbn);	
+	}
+	else 
+	{
+		document.getElementById("result_text").innerHTML = "error";
+	}
+}
+
+
+</script>
+
+<style type="text/css">
+<!--
+#result_text {
+	background-color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px;
+	width: 300px;
+	border: 1px dashed #FF6600;
+}
+.calc_box {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding: 15px;
+}
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+body {
+	background-color: #F5F5F5;
+}
+.update {
+	background-color: #FFFFCC;
+	border: 1px dashed #FF9900;
+	padding: 4px;
+}
+-->
+</style>
+</head>
+
+<body>
+
+
+<table width="387" border="0" align="center" cellpadding="10" cellspacing="0">
+  <tr>
+    <td bgcolor="#FFFFFF"><table width="367" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#3366CC">
+      <tr>
+        <td align="center" bgcolor="#3366CC" class="heading">ISBN-10 / ISBN-13 Conversion Tool </td>
+      </tr>
+      <tr>
+        <td align="center" bgcolor="#E8F4F0"><div class="calc_box">
+            <p>Enter an ISBN-10 or ISBN-13* below:</p>
+            <p>
+              <input name="isbn_text" type="text" id="isbn_text" size="13" maxlength="13" onkeypress="javascript:if(window.event.keyCode == 13) runISBNconv();">
+              <input type="button" name="Submit" value="Calculate" onClick="javascript:runISBNconv()">
+            </p>
+            <div id="result_text">&nbsp;</div>
+        </div></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td width="375" bgcolor="#FFFFFF">
+      <p>As you may be aware, the book industry is changing from 10 to 13 digit ISBNs in January 2007.  
+        This tool is intended to provide a simple way of converting between these numbers, if you happen to find it necessary to do so. </p>
+      <p>* Please note that only ISBN-13 beginning with &lsquo;978&rsquo; can be converted to ISBN-10. ISBNs issued from January 2007, with different preceding digits, will not be convertible as the resulting ISBN-10 would not be a unique identifier. </p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

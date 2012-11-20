@@ -1,7 +1,8 @@
 /* Started with class example daily kitteh a template*/
 
 body {
- 	background-color:#E6E6FB;
+  	 
+	background-color:white;
  }
 #wrapper {
 	width: 900px;
@@ -29,7 +30,61 @@ body {
 	padding:5px;
 	border-bottom: 1px solid black;
 }
+
+#warning {
+	color: red; 
+	font-weight:800;
+		 
+}
+.output_header{
+	font-size:15px;
+	font-weight:800;
+	width:15%;
+	float:left;
+	color: black;
+	font-family:Verdana;
+		
+}
+.output{
+	text-align:left;
+	font-size:15px;
+	float:left;
+	width:85%;
+	color: blue;
+	font-family:Verdana;
+		
+} 
+#i_isbn{
+	alignment-baseline:central;	
+	width: 300px;
+	text-align: left;
+}
+#left {
+ 	text-align: left;
+	width: 80%;
+	float: left;
+
+}
+
  
+#middle{
+ 	text-align: left;
+	width: 70%;
+	float: left;
+
+}
+
+#right {
+ 	 
+	width: 20%;
+	float: right;
+	padding: 0px;
+}
+#bottom {
+	text-align: left; 
+	width: 800px;
+	float: left;
+}
 
 
 .roundedbox {
@@ -42,7 +97,54 @@ body {
 	background-clip: padding-box;
 	padding: 30px;
 }
- 
+.roundedbox2 {
+	border: 1px solid #aed0ea; 
+ 	background: #deedf7 url(images/ui-bg_highlight-soft_100_deedf7_1x100.png) 50% 50% repeat-x; 
+ 	color: #222222; 
+ 	 
+ 	border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 30px;
+}
+ .ui-widget-header 
+ 	{ 
+ 	border: 1px solid #aed0ea; 
+ 	background: #deedf7 url(images/ui-bg_highlight-soft_100_deedf7_1x100.png) 50% 50% repeat-x; 
+ 	color: #222222; 
+ 	font-weight: bold; 
+ 	border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 30px;
+	text-align: center;
+ 	}
+ 	
+.roundedbox3 {
+	border: 1px solid #aed0ea; 
+ 	background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x;
+ 	color: #362b36; 
+ 	 
+ 	border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 30px;
+}
+ .ui-widget-content { 
+ 	    border: 1px solid #dddddd; 
+ 		background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36; }
 
 #describe {
 	text-align: center;
@@ -61,9 +163,64 @@ bold {
 	padding: 4px;
 } 
 #footer {
-	text-align: left;
+	color: brown;
+	font-size: 8px;	
+	text-align: center;
 	clear: both;
 	padding-bottom: 5px;
 	padding-left:10px;
 	padding-right: 5px;
+}
+
+ 
+ table {
+ 	padding: 5px;
+	
+    border-collapse:separate;
+    border:solid #DEEDF7 1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+}
+
+td {
+	padding: 5px;
+	border:solid #DEEDF7 1px;
+   
+    
+}
+
+th{
+	padding-top: 0px;
+		border:solid #DEEDF7 1px;
+}
+th {
+    
+    background: #DEEDF7 url(images/ui-bg_highlight-soft_100_deedf7_1x100.png) 50% 50% repeat;
+  
+}
+
+td:first-child {
+	padding: 5px;
+}
+
+​
+.searchform input {
+	padding: 0;
+	width: 100%;
+	color: #555;
+	border: none;
+	background: none;
+}
+
+.searchform input:focus {
+	outline: none;
+}
+ 
+.searchform {
+	position: relative;
+	font-family: "Lucida Grande", Helvetica, Arial, Sans-serif;
+	border-radius: 2em;
+	background: #fff;
+	line-height: 1em;
+	padding: 4px 31px 4px 15px;
 }

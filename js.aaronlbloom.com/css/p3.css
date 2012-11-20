@@ -1,0 +1,69 @@
+/* Started with class example daily kitteh a template*/
+
+body {
+ 	background-color:#E6E6FB;
+ }
+#wrapper {
+	width: 900px;
+	border: 0px solid black;
+	vertical-align: center;
+	padding-left: 100px;
+	padding-right:100px;
+}
+ 
+#header {
+	width: 800px;
+	text-align: center;
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	color: brown;
+	background-color: white;
+	padding:1px;
+}
+#title {
+	font-size: 30px;
+}
+.tagline {
+	color: brown;
+	font-size: 14px;
+	padding:5px;
+	border-bottom: 1px solid black;
+}
+ 
+
+
+.roundedbox {
+	border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 30px;
+}
+ 
+
+#describe {
+	text-align: center;
+	width: 900px;
+	float: right;
+	background-color: white;
+	padding: 0px;
+}
+bold {
+	font-weight: bold;
+} 
+.label {
+	text-align: left;
+	float:left;
+	font-family: Arial;
+	padding: 4px;
+} 
+#footer {
+	text-align: left;
+	clear: both;
+	padding-bottom: 5px;
+	padding-left:10px;
+	padding-right: 5px;
+}
