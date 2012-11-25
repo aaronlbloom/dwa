@@ -1,4 +1,4 @@
-$(document).ready(function() { 
+$(document).ready(function(){ 
 	
 //Handle user clicking back button after going to google or amazon link. If you click back the ISBN will still be populated in the input form field, reload the page.	
 if($('#i_isbn').val()){
@@ -20,6 +20,7 @@ $('#submitButton').click(function() {
 //Main controller type js function to handle grabbing the input value, validating it is a real ISBN and either returning an 
 // error message or calling the function to perform the API call if it's valid 
 function check_input(){
+	    $( "#helpBox" ).css("visibility","hidden");
  	 	$("#content").html("<div>Checking...</div>");
  	 	$input_isbn=$('#i_isbn').val();
  	 	var $results = new Array();
@@ -56,8 +57,6 @@ function validate_isbn($input_isbn){
      
 }  
 
-
- 
 //API call to google books to get information about input ISBN and start throwing data onto the screen:
 function get_book_info($input,$type){
  	      
@@ -69,9 +68,9 @@ function get_book_info($input,$type){
 		  if($type=="main"){//Main call to populate entered ISBN's data onto the main screen
 		  	$url = 'https://www.googleapis.com/books/v1/volumes?q=:isbn=' + $input + '&callback=?';
 		  }else if($type=="title"){//Call to lookup 'related' item's based on the title of the book
-		  	$url = 'https://www.googleapis.com/books/v1/volumes?q=:title=' + $input + '&callback=?';
+		  	$url = 'https://www.googleapis.com/books/v1/volumes?q=:title=' + $input + '&maxResults=40&callback=?';
 		  }else if($type=="authors"){//Call to lookup 'related' items based on the author
-		  	$url = 'https://www.googleapis.com/books/v1/volumes?q=:authors=' + $input + '&callback=?';
+		  	$url = 'https://www.googleapis.com/books/v1/volumes?q=:authors=' + $input + '&maxResults=40&callback=?';
 		  }
 			/*$.ajaxSetup({
   				"error":function() {   
@@ -127,14 +126,20 @@ function get_book_info($input,$type){
 				
 				//The Try/Catch prevents the query from failing should the specific tree element not be present in the results. 
 				//The if() statement within the try/catch prevents 'undefined' from being returned for results where the node is present but no value
+			 
 		        try {
-		        	if(item.volumeInfo.industryIdentifiers[0].identifier){
-  				 		$i_isbn10 = item.volumeInfo.industryIdentifiers[0].identifier;
+		        	if((item.volumeInfo.industryIdentifiers[0].identifier)){
+		    		 		if((item.volumeInfo.industryIdentifiers[0].type=="ISBN_10")){
+		    		 			//sometimes an identifier other than isbn10 or 13 is presented. Only grab 10/13. 
+		    		 			$i_isbn10 = item.volumeInfo.industryIdentifiers[0].identifier; 
+		    		 		}
   				 	}
   				}catch(e){}
 		        try {
-		        	if(item.volumeInfo.industryIdentifiers[1].identifier){
-  				 		$i_isbn13 =  item.volumeInfo.industryIdentifiers[1].identifier;
+		        	if((item.volumeInfo.industryIdentifiers[1].identifier) ){
+		        		if((item.volumeInfo.industryIdentifiers[1].type=="ISBN_13")){
+  				 			$i_isbn13 =  item.volumeInfo.industryIdentifiers[1].identifier;
+  				 		}
   				 	}
   				}catch(e){}
   				try {
@@ -203,7 +208,7 @@ function get_book_info($input,$type){
 		     	         		if($type=="main"){
 		     	         			$(".content").html(""); //Reset the content class section of the screen prior to populate with good data
 				         		}
-				         	
+				          
 				     		//Push captured elements, their 'caption/column' name and their position on the page into an object to pass to other functions.
 						 	i = 0;
 							$book[1][i]	   = "Title";
@@ -214,6 +219,7 @@ function get_book_info($input,$type){
 							$book[2][i]   	= $i_authors;
 							$book[3][i] 	= "left";
 							i++;
+							
 							$book[1][i] 	= "ISBN 10";
 							$book[2][i]   	= $i_isbn10
 							$book[3][i] 	= "left";
@@ -239,11 +245,21 @@ function get_book_info($input,$type){
 							$book[3][i] 	= "left";
 							i++;
 							$book[1][i] 	= "Link";
-							$book[2][i]  	= "<a href='" + $i_link + "'>Google</a>";
+							//sometimes a valid ISBN10 is not returned so the links will not be valid, do not show links in this case:
+							if($i_isbn10==" "){
+								$book[2][i]  	= " ";							
+							}else{
+								$book[2][i]  	= "<a href='" + $i_link + "'>Google</a>";
+							}
 							$book[3][i] 	= "left";
 							i++;
 							$book[1][i] 	= "Link";
-							$book[2][i]  	= "<a href='http://amzn.com/" +$i_isbn10 + "'>Amazon</a>";
+							if($i_isbn10==" "){
+								$book[2][i]  	= "";
+								
+							}else{
+								$book[2][i]  	= "<a href='http://amzn.com/" +$i_isbn10 + "'>Amazon</a>";
+							}
 							$book[3][i] 	= "left";
 							i++;
 							$book[1][i]	 	= "Description";
@@ -260,7 +276,7 @@ function get_book_info($input,$type){
 		 				if($type=='main'){
 		 					//Populates the main portion of the page
 		 					populate_main($book); 
-		 					
+		 					//get_author_info($i_authors);
 		 					//creates a table that will be filled in with a list of related items for a popup 
 		 					$("#myTable").append('<table>')
 			 			 	$("#myTable").append('<thead><tr>')
@@ -298,7 +314,7 @@ function get_book_info($input,$type){
  		  	 	
 //jsonr.success(function() { alert("second success"); })
 jsonr.error(function() { alert("Error! Status: " + jsonr.status + ", Error Message: " + jsonr.statusText); })
-//jsonr.complete(function() { alert("complete"); });
+// jsonr.complete(function() { alert("complete"); });
  	 
  	}
  	//Populate the main page
@@ -316,6 +332,8 @@ jsonr.error(function() { alert("Error! Status: " + jsonr.status + ", Error Messa
   	}
   	//Populate the related items list table
   	function populate_list($book){		
+ 			
+ 			
  				 
   			$("#myTable").append("<tr>");
   			for (var i=0;i<$book[2].length;i++)
@@ -348,7 +366,7 @@ jsonr.error(function() { alert("Error! Status: " + jsonr.status + ", Error Messa
             hide: "explode",
            
             closeText: '__' ,
-            width:"70%",
+            width:"1200px"
             
             
         });
@@ -360,6 +378,17 @@ jsonr.error(function() { alert("Error! Status: " + jsonr.status + ", Error Messa
             return false;
         });
     });
+    //When the 'help' link is clicked a new box appears at the bottom providing help on how to use the screen
+      $("#helpLink").click(function() {
+      	  if($( "#helpBox" ).css("visibility")=="visible"){
+      	  	  $( "#helpBox" ).css("visibility","hidden");
+      	  }else{
+      	  	  $( "#helpBox" ).css("visibility","visible");
+      	  }
+          
+            return false;
+        });
+    
  
  	 //useing live function to allow click listener to work on dynamically created elements
  	 $(".newBook").live("click",function(){ 	 	
@@ -372,9 +401,37 @@ jsonr.error(function() { alert("Error! Status: " + jsonr.status + ", Error Messa
 	   	  	   get_book_info($this_isbn,'main');  
  	 	 	return false;
  	 });
- 	  // bind 'myForm' and provide a simple callback function 
-            $('#myForm').ajaxForm(function() { 
-                alert("Thank you for your comment!"); 
-            }); 	
+ 		
+ 	/* 
+ 
+ * I attempted to provide a WikiPedia infobox for author information. 
+ * I succesfully wrote a function to retrieve the infobox data but stumbled when attempting to push that data onto the page. 
+ * To push the data to the page in a meaningful way apparantly requires implementing a Template, which I did not have the time to learn how to do for this project .
+ * 
+ * I left this code in here commented out in case I wished to pursue this further in future. 
+ */
+/*
+function get_author_info($input){
+ 		
+		$input = $input.replace(" ", "_");
+		console.log("author name:" + $input);	
+	    $url = 'http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=timestamp|user|comment|content&titles=' + $input + '&format=json&callback=?';
+	  
+		 $.getJSON($url, function(data) {   
+		 //	 console.log(data);
+    
+		    for (var pageId in data.query.pages) {
+			    if (data.query.pages.hasOwnProperty(pageId)) {
+			    	//console.log(pageId);
+			        //console.log(data.query.pages[pageId].revisions[0]['*']);
+			          $("#authorInfo").html(data.query.pages[pageId].revisions[0]['*']);
+			     }
+			}
+ 
+		}); 
+}
+*/
+ 
  	 		 
- }); // end doc ready; do not delete this!
+ }); 
+ // end doc ready; do not delete this!

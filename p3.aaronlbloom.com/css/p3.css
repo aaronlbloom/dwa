@@ -201,7 +201,6 @@ td:first-child {
 	padding: 5px;
 }
 
-​
 .searchform input {
 	padding: 0;
 	width: 100%;
@@ -213,7 +212,9 @@ td:first-child {
 .searchform input:focus {
 	outline: none;
 }
- 
+#helpBox {
+	visibility: hidden;
+}
 .searchform {
 	position: relative;
 	font-family: "Lucida Grande", Helvetica, Arial, Sans-serif;
