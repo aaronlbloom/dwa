@@ -28,7 +28,7 @@
 	 
 	
     <div    class="content" id="myTable"> </div>
-    <div    class="roundedbox3" id="helpBox"><img src="/img/p3_help.jpg" width="850px">	 </div>
+    <div    class="roundedbox3" id="helpBox"><img src="/img/p3_help_window.jpg" width="850px">	 </div>
 	 
 	 
 </div>
