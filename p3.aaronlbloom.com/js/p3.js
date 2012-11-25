@@ -365,7 +365,7 @@ jsonr.error(function() { alert("Error! Status: " + jsonr.status + ", Error Messa
             show: "blind",
             hide: "explode",
            
-            closeText: '__' ,
+            closeText: 'close' ,
             width:"1200px"
             
             
