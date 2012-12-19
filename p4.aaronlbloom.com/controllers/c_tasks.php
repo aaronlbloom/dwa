@@ -12,53 +12,8 @@ class tasks_controller extends base_controller {
 			
 		}
 	 
-	public function view_specific($where=null, $title=null){
-		#generic routine to show a list of tasks for a specific reason	
-		$input = $_GET['input'];
-		if(!$this->user){
-			$this->template->content = View::instance("v_user_login");
-			$this->template->message = "Login is invalid, please try again.";
-			
- 	   	}else{
- 	   		$this->template->content 		= View::instance("v_tasks_specific");
-			$this->template->message 	    = "<a href='/users'>Return to Main Page</a>";
-			$this->template->logout 	    = "<a href='/users/logout'>Logout</a>";
-  			 $this->template->content->input	= $title.$input;
- 			 
- 			
-			#get the tasks specific to this topic:
-			
-			$q = "select u.user_name, u.last_name, u.first_name, u.email, p.post, p.created, p.modified 
-						from users u, tasks p 
-						where u.user_id = p.poster 
-						and   p.post_id in (".$where." =  '".$input."')
-					
-						order by created desc";	
-			
-			$tasks = DB::instance(DB_NAME)->select_rows($q);			
-			$this->template->content->tasks = $tasks; 			
-			
-			$this->template->content->content_detail = View::instance("v_tasks_detail");
-	 	   	
-		}
-			echo $this->template;
-	}
-
-	public function users(){
-			
-			$this->template->content = View::instance("v_tasks_users");
-			
-			
-			$q = "SELECT * FROM users";
-			
-			$users = DB::instance(DB_NAME)->select_rows($q);
-			
-			$this->template->content->users = $users;
-			
-			echo $this->template;
-			
-		}
-    	
+	
+     	
 	public function add(){
 			
 			$this->template->content = View::instance("v_tasks_modify");
@@ -113,15 +68,17 @@ class tasks_controller extends base_controller {
 			
 		}
 	public function get_task_common($readonly){
+		   //this common view is shared between the 'view' only and 'change' functions. these are the common tasks of getting the task. 
+			
 			$input = $_GET['input'];
-		 
-			$this->template->content = View::instance("v_tasks_modify");
-			$this->template->content->t_detail_1=  View::instance("v_t_details");
+			$this->template->content 			 = View::instance("v_tasks_modify");
+			$this->template->content->t_detail_1 =  View::instance("v_t_details");
 						$this->template->content->readonly = $readonly;
 			
 	        $this->template->message 	    = "<a href='/users'>Return to Main Page</a>";
 			$this->template->logout 	    = "<a href='/users/logout'>Logout</a>";
 	        
+			//This sql gets the header information for the task:
 	       	$q = "select t.* , tt.task_type_descr, ct.change_type_descr, st.status_descr
 						from users u, task_header t, task_type tt, change_type ct, status st
 						where u.user_id        = t.user_id 
@@ -134,12 +91,14 @@ class tasks_controller extends base_controller {
 			$tasks = DB::instance(DB_NAME)->select_row($q);			
 			$this->template->content->tasks = $tasks;
 			
+			//Gets a list of task detail types. This is NOT for use to push to the screen but for use to loop through the task detail table:
 			$q = "select * from task_detail_type";
 			$task_detail_type_internal = DB::instance(DB_NAME)->select_rows($q);	
 			
+			//set the sections array with nothing in case no details are found for this task:
 			$sections[0] = "";
 					
-					
+			//Get task details array for this task 
 			foreach($task_detail_type_internal as $key => $type){
 				$view_name = "t_detail_".@$type[task_detail_type_id];
 				$this->template->content->$view_name =  View::instance("v_t_details");
@@ -168,67 +127,69 @@ class tasks_controller extends base_controller {
 			  
 			$this->template->content->sections = $sections;
 			 
+			//Get the list of headers for the 10 'custom' header fields (ie. custom_01, custom_02...)
 		    $q = "select * from custom_headers";
 			$custom_headers = DB::instance(DB_NAME)->select_row($q);	
 			$this->template->content->custom_headers = $custom_headers;
 			
-			
+			//Get the list of task types for displaying on the screen
 			$q = "select * from task_type";
 			$task_types = DB::instance(DB_NAME)->select_rows($q);	
 			$this->template->content->task_types = $task_types;
 		
 			
-			
+			//Get the list of task detail type's for the drop down at the bottom of the screen that will let you create new sections. 
+			// This special version of the query will exclude types already being used by this task enforcing the rule that you can only have one section per type per task
 			$q = "select task_detail_type_id, task_detail_type_descr from task_detail_type where task_detail_type_id not in 
 					(select  td.task_detail_type_id from task_header th, task_detail td, task_detail_type tdt
 					   where td.task_header_id = th.task_header_id
 					     and td.task_detail_type_id = tdt.task_detail_type_id
 						 and th.task_header_id = '".$input."')";
 			$task_detail_types = DB::instance(DB_NAME)->select_rows($q);
-			 
- 			$this->template->content->task_detail_types = $task_detail_types;
+			$this->template->content->task_detail_types = $task_detail_types;
 			
-			
+			//Get the list of change types for displaying on the screen
 		   	$q = "select * from change_type";
 			$change_types = DB::instance(DB_NAME)->select_rows($q);	
 			$this->template->content->change_types = $change_types;
 			
+			//Get the list of statuses for displaying on the screen. 
 			$q = "select * from status";
 			$status_types = DB::instance(DB_NAME)->select_rows($q);	
 			$this->template->content->status_types = $status_types;
-			
-			
-			
-			
-			
+	
 	}  
  
 	public function p_add() {
-			# Set up the view
+			# Function to add a new task to the database .
 			#print_r($_POST);
 			
 			
 			$_POST['created'] =  Time::now();
  			$_POST['modified'] = Time::now();
-			$_POST['user_id'] = $this->user->user_id;
+			$_POST['user_id']  = $this->user->user_id;
 			
 			#Write Post to the Database
 		    $post_id=   DB::instance(DB_NAME)->insert('task_header', $_POST);
 		    
 		    
-		   Router::redirect('/users/');
+  		   Router::redirect('/users/');
 			
 						
 		}
 		
 	 public function p_change() {
-			# Set up the view
+			# Function to change the values of a task modified on the screen
 			//print_r($_POST);
  	 		
  	  
 			$_POST['modified'] = Time::now();
 			$_POST['user_id'] = $this->user->user_id;
 			
+ 			//I used a custom query instead of the delivered 'Update' method to more easily seperate the different post values. The delivered update method
+ 			// can easily push the entire POST varaible to a db update. My page has a header section and an unknown number of update and/or inserts to detail sections
+ 			// it seemed easiest to break these up into distinct updates
+ 			// One issue i encountered was that only the delivered update method scrubs the input string data so I had to add the addslashes method around my strings manually
  			
 			$q = "UPDATE task_header SET 
 					
@@ -259,7 +220,7 @@ class tasks_controller extends base_controller {
   		    $task_detail_descrs=$_POST['task_detail_descr'];
 			$task_detail_type_ids = $_POST['task_detail_type_id'];
 			
-		 
+		    //Update modified existing details:
  			foreach($lines as $key => $line){
  				
 				$q = "UPDATE task_detail SET 
@@ -271,13 +232,14 @@ class tasks_controller extends base_controller {
 		        $resonse = DB::instance(DB_NAME)->query($q);	
 			  
 			 }
-			 
+			 //If new section detail data was added , inesrt it. 
 			 if (isset($_POST['new_detail_descr'])) {
 			 	$new_detail_type = $_POST['new_detail_type'];
 			 	$new_detail_descrs = $_POST['new_detail_descr'];
 			 	
 			 	foreach($new_detail_descrs as $key => $new_detail_descr){
 					if($new_detail_descr!=""&$new_detail_descr!=null){
+				 		//Get the next line number on the detail table for this task in preperation for the insert:	
 				 		$q = "select max(td.line) max_line from task_detail td, task_detail_type tdt 
 				 			 where td.task_detail_type_id = tdt.task_detail_type_id
 				 			 and   td.task_header_id =  '".$_POST['task_header_id']."'
@@ -285,11 +247,11 @@ class tasks_controller extends base_controller {
 				 			 
 				 			 ";
 						 
-				 		//$q = "select count(1) from task_detail td";
-				  	 
+										 	 
 			        	$resp = DB::instance(DB_NAME)->select_row($q);	
 						$next_line = $resp['max_line']	+ 1;		
-					 
+					 	
+						
 				 		$q = "select tdt.task_detail_type_id from task_detail_type tdt 
 				 			 where  tdt.task_detail_type_descr ='".$new_detail_type[$key]."'
 				 			 ";
@@ -297,30 +259,26 @@ class tasks_controller extends base_controller {
 				 		$type_id   = $resp['task_detail_type_id'];
 					
 								 	
-			     		 print_r($next_line);
-						 print_r($type_id);
-						 print_r($new_detail_type[$key]);
-						 print_r($new_detail_descr);
-						 
+			     		// print_r($next_line);
+						// print_r($type_id);
+						// print_r($new_detail_type[$key]);
+						// print_r($new_detail_descr);
+	         			
+	         			//Insert new detail record to the detal table
 						 $q = "INSERT into task_detail (task_header_id, task_detail_type_id, line, task_detail_descr, created, modified) values (
 						 		".$_POST['task_header_id'].",".$type_id.",".$next_line.",'".addslashes($new_detail_descr)."',".Time::now().",".Time::now().");";
 												
-			  			
-		        			$resonse = DB::instance(DB_NAME)->query($q);	
-			  
-						 
-					  
-					  }
-					
-					
+		        		 $resonse = DB::instance(DB_NAME)->query($q);						  
+					  }	
 				}
-		        //print_r($new_detail_type);
+		       
 				}
 		    Router::redirect('/tasks/view?input='.$_POST['task_header_id']);
 			 			
 		}
 
 		public function p_delete() {
+			//Function to delete a section detail record. 
 			$input = $_GET['task_id'];
 			DB::instance(DB_NAME)->delete('task_detail', "WHERE task_detail_id = '".$input."'");
 		    print_r($_GET['header_id']);

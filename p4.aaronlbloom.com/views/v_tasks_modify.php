@@ -1,32 +1,28 @@
 <div id="wrapper" class="roundedbox"> 
-
- 		 	<form method='POST' action='/tasks/<?php echo @$action;?>'>
+	<form method='POST' action='/tasks/<?php echo @$action;?>'>
 		<div class="roundedbox" >
-		
 			<div class="post" id="posttitle">
-				 <?php echo @$caption?> a Task:<br>
-				 <br>
-				
-									 <?php if($caption=="View"){?>
-				<div id="button_left" class="submit"> <a href="/tasks/change?input=<?php echo @$tasks[task_header_id]?>">Change this Task</a></div>
+				<!--Create a dynamic label and button at the type depending on whether the page is in change or view only mode -->
+				 <?php echo @$caption?> a Task:<br><br>
+				 <?php if($caption=="View"){?>
+				 	<div id="button_left" class="submit"> <a href="/tasks/change?input=<?php echo @$tasks[task_header_id]?>">Change this Task</a></div>
 				 <?php }?>
 				 <?php if($caption=="Change"){?>
-				 <div id="button_left" class="submit"><a href="/tasks/view?input=<?php echo @$tasks[task_header_id]?>">View this Task</a>	</div>
+				 	<div id="button_left" class="submit"><a href="/tasks/view?input=<?php echo @$tasks[task_header_id]?>">View this Task</a>	</div>
 				 <?php }?>
-			 
+				 
 				 <div id="button_right"> <?php if($caption!="View"){?><input type='submit' class="submit" value="Save your Changes"> <?php }?> </div>
-			  
 			</div>
 		
-				<div class='content'>
-					
+			<div class='content'>					
 						
-						<div class='output_header'> Task ID:		    </div><div class='output'> <input type='text' name='task_header_id' 	 	value="<?php echo @$tasks[task_header_id]?> " 	readonly></div>
+						<div class='output_header'>Task ID:		    </div><div class='output'> <input type='text' name='task_header_id' 	 	value="<?php echo @$tasks[task_header_id]?> " 	readonly></div>
 						<br><br>
 					 	<div class='output_header'>Task Name:		</div><div class='output'> <input type='text' required= “required” name='task_name' 		placeholder="Task Name" 	value="<?php echo @$tasks[task_name]?> " 		<?php echo @$readonly?>></div>
 						<br><br>
 						<div class='output_header'>Summary :		</div><div class='output'> <input type='text' required= “required” name='summary' 		    placeholder="Summary" 	value="<?php echo @$tasks[summary]?> " 		<?php echo @$readonly?>></div>
 						<br><br>
+						
 						<?php if($caption=="View"){?>
 					 			<div class='output_header'>Task Type:		</div><div class='output'> <input type='text' required= “required” name='task_type_id' 		placeholder="Task Type" 	value="<?php echo @$tasks[task_type_descr]?> " 	<?php echo @$readonly?>></div>
 								<br><br> 
@@ -121,12 +117,13 @@
 		</div>
 		<div>  
 			<br>
+			<!--This loops through and displays a passed array of possible 'section' views set from the tasks controller-->
 			<? foreach($sections as $section): ?>
 				<?=$section?>
 			<? endforeach; ?>
 			 
 		</div>
-		 
+		<!-- Below is a div where you can add new sections. The drop down box shows possible sectoins to add, added through javascript on choice, and inserted into this 'newsection' area just below-->
 		<div id="newSection"></div>
 		<div>
 			 <?php if($caption=="Change"){?>
