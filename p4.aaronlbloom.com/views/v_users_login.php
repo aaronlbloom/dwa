@@ -10,8 +10,8 @@
 					<input type='text' required= “required” name='email' placeholder="Email Address">
 					<br><br>
 					<input type='password' required= “required” name='password' placeholder="Password">
-					<br>
-					<input type='submit'>
+					<br><br>
+					<input type='submit' class="submit" value="Login">
 				</form>
 
 			</div>
@@ -23,15 +23,15 @@
 					
 				 	<input type='text' name='first_name' placeholder="First Name">
 					<br><br>
-				 	<input type='text' required= “required” name='last_name' placeholder="Last Name">
+				 	<input type='text' required= “required” name='last_name' placeholder="Last Name" >
 					<br><br>
 					 <input type='text' required= “required” name='user_name' placeholder="User Name">
 					<br><br>
 					<input type='email' required= “required” name='email' placeholder="Email Address">
 					<br><br>
 				 	<input type='password' required= “required” name='password' placeholder="Password">
-					<br>
-					<input type='submit'>
+					<br><br>
+					<input type='submit' class="submit" value="Signup">
 	
 				</form>			 
 			</div>

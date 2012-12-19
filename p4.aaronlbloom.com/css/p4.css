@@ -1,16 +1,36 @@
-/* Started with class example daily kitteh a template*/
+/*Thanks to this site for some nice form style tips: http://net.tutsplus.com/tutorials/html-css-techniques/design-a-prettier-web-form-with-css-3/*/
 
 body { 	 
 	background-color:white;
+	color: #999999;  
+	
  }
+a{
+ color: black;  
+}
+ a:hover{
+   color: #7F93B7;  
+}
 input[type='text'] {
 	width: 500px;
 }
 #wrapper {
 	width: 900px;
 	border: 0px solid black;
-	vertical-align: center;
 	margin: 0px auto;
+}
+#button_left{
+	float:left;	
+}
+.submit a{	 
+	background: #7F93B7; 
+	color: #FFFFFF; 
+	text-decoration:none
+}
+
+
+#button_right{
+	float:right;
 }
 #side_wrapper{
 	 
@@ -19,22 +39,16 @@ input[type='text'] {
 	float: left;
  
 }
-#descr {
-	 
-	float:left;
-	text-align: left;
-	width: 500px;
-	height:100px;
- 	 
  
-}
 #header {
 	width: 900px;
 	text-align: center;
-	font-family: "Comic Sans MS";
+	 
+		font-family:Verdana;
+	  
+    color: #999999;  
 	font-weight: bold;
-	color: brown;
-	background-color: white;
+ 	background-color: white;
 	padding:1px;
 }
 
@@ -50,7 +64,9 @@ textarea[readonly]{
 	 background-color:#C0C0C0;
 }
 #logout{
-	color: brown;
+		font-family:Verdana;
+	  
+    color: #999999;  
 	float: right;	
 	padding:5px;
 }
@@ -87,10 +103,17 @@ textarea[readonly]{
 	padding: 30px;
 }
 .tagline {
-	color: brown;
+	font-family:Verdana;
+	  
+    color: #999999;  
 	font-size: 14px;
 	padding:5px;
 	border-bottom: 1px solid black;
+}
+.boldText{
+	font-family: Arial;
+	font-size: 30px;
+	font-weight: 800;
 }
 .post {
 	width: 95%;
@@ -99,6 +122,9 @@ textarea[readonly]{
 	text-align: left;
 	font-family: Arial;
 	padding: 10px;
+	font-size: 25px;
+	font-weight: 800;
+	color: #999999;  
 }
 .postName {
 	float: left;
@@ -128,9 +154,9 @@ textarea[readonly]{
 	font-family:Verdana;
 		
 } 
+ 
 .content {
-	width: 95%;
-	 
+	width: 95%; 
 	float: left;
 	text-align: left;
 	font-family: Arial;
@@ -144,7 +170,8 @@ textarea[readonly]{
 	width:15%;
 	float:left;
 	color: black;
-	font-family:Verdana;
+	font-family:Verdana;   
+    color: #999999;  
 		
 } 
 .bottom {
@@ -165,4 +192,82 @@ textarea[readonly]{
 	background-clip: padding-box;
 	padding: 30px;
 }
- 
+
+
+.submit,.addLine {  
+    width: auto;  
+    padding: 9px 15px;  
+    background: #617798;  
+    border: 0;  
+    font-size: 14px;  
+    color: #FFFFFF;  
+    
+    
+    border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+    } 
+.submit,.addLine:hover{
+	background: #7F93B7; 
+	color: #FFFFFF; 
+}
+
+input, textarea {  
+    padding: 9px;  
+    border: solid 1px #E5E5E5;  
+    outline: 0;  
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;  
+    width: 200px;  
+    background: #FFFFFF; 
+    
+    
+      
+	margin: 0px auto;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; 
+    }  
+textarea {  
+    width: 500px;  
+    max-width: 500px;  
+    height: 150px;  
+    line-height: 150%;  
+    }  
+input:hover, textarea:hover,  
+input:focus, textarea:focus {  
+    border-color: #C9C9C9;  
+    }  
+    
+
+
+.form label {  
+    margin-left: 10px;  
+    color: #999999;  
+    }  
+/* Thanks to the following stack overflow question for the following select style: http://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript*/
+ select {
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-image: url(../images/select-arrow.png), 
+    -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background-position: center right;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  font-size: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;}

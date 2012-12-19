@@ -49,7 +49,7 @@ class index_controller extends base_controller {
 				 
  	   	}else{
  	   		 
-	  		  Router::redirect('/');
+	  		  Router::redirect('/users/');
 
  	   	}
 		

@@ -16,11 +16,11 @@ class index_controller extends base_controller {
 			$this->template->content = View::instance('v_users_login');
 			
 		# Now set the <title> tag
-			$this->template->title = "P4 Proposal";
+			$this->template->title = "TaskReq";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
-						"/css/p4.css","/css/poster.css"
+						" "
 	                    );
 	    
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
@@ -30,15 +30,15 @@ class index_controller extends base_controller {
 			$users = DB::instance(DB_NAME)->select_field($q);	
 			
 		if(!$this->user){
-		
+		 
 			 
-			$this->template->content = View::instance("v_users_login");
-		 $this->template->message = "<--------------------First time using post-er, try clicking HELP";
+		 $this->template->content = View::instance("v_users_login");
+		 $this->template->message = "<--------------------First time using TaskReq, try clicking HELP";
 		 
 				 
  	   	}else{
  	   		 
-	  		  Router::redirect('/');
+	  		  Router::redirect('/users/');
 
  	   	}
 		
@@ -60,6 +60,13 @@ class index_controller extends base_controller {
 
 	}
 	
+	public function help(){
+		$this->template->content = View::instance("v_help");
+		$this->template->message 	    = "<a href='/'>Return to Main Page</a>";
+		echo $this->template;
+		
+		
+	}
  
 	
 		

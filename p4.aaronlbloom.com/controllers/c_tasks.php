@@ -106,7 +106,7 @@ class tasks_controller extends base_controller {
 		}
 		public function view(){
 		    $this->get_task_common("readonly");
- 			
+ 		
 	        $this->template->content->caption = 'View';
 			
 			echo $this->template;
@@ -225,29 +225,29 @@ class tasks_controller extends base_controller {
 			# Set up the view
 			//print_r($_POST);
  	 		
- 	 	
+ 	  
 			$_POST['modified'] = Time::now();
 			$_POST['user_id'] = $this->user->user_id;
 			
  			
 			$q = "UPDATE task_header SET 
 					
-					task_name 			= '".$_POST['task_name']."', 
-					summary 			= '".$_POST['summary']."',  
+					task_name 			= '".addslashes($_POST['task_name'])."', 
+					summary 			= '".addslashes($_POST['summary'])."',  
 					task_type_id 		= '".$_POST['task_type_id']."', 
 					change_type_id 		= '".$_POST['change_type_id']."', 
 					status_id 			= '".$_POST['status_id']."', 
-					description 		= '".$_POST['description']."', 
-					custom_01 			= '".$_POST['custom_01']."', 
-					custom_02 			= '".$_POST['custom_02']."', 
-					custom_03			= '".$_POST['custom_03']."', 
-					custom_04 			= '".$_POST['custom_04']."', 
-					custom_05 			= '".$_POST['custom_05']."', 
-					custom_06 			= '".$_POST['custom_06']."', 
-					custom_07 			= '".$_POST['custom_07']."', 
-					custom_08 			= '".$_POST['custom_08']."', 
-					custom_09 			= '".$_POST['custom_09']."', 
-					custom_10 			= '".$_POST['custom_10']."',
+					description 		= '".addslashes($_POST['description'])."', 
+					custom_01 			= '".addslashes($_POST['custom_01'])."', 
+					custom_02 			= '".addslashes($_POST['custom_02'])."', 
+					custom_03			= '".addslashes($_POST['custom_03'])."', 
+					custom_04 			= '".addslashes($_POST['custom_04'])."', 
+					custom_05 			= '".addslashes($_POST['custom_05'])."', 
+					custom_06 			= '".addslashes($_POST['custom_06'])."', 
+					custom_07 			= '".addslashes($_POST['custom_07'])."', 
+					custom_08 			= '".addslashes($_POST['custom_08'])."', 
+					custom_09 			= '".addslashes($_POST['custom_09'])."', 
+					custom_10 			= '".addslashes($_POST['custom_10'])."',
 					modified            = '".$_POST['modified']."'				
 					WHERE task_header_id = '".$_POST['task_header_id']."'
 					";
@@ -255,14 +255,15 @@ class tasks_controller extends base_controller {
 			$response = DB::instance(DB_NAME)->query($q);	
 			 
 			$lines = $_POST['line'];
- 	 	    $task_detail_descrs = $_POST['task_detail_descr'];
+ 			  
+  		    $task_detail_descrs=$_POST['task_detail_descr'];
 			$task_detail_type_ids = $_POST['task_detail_type_id'];
 			
 		 
  			foreach($lines as $key => $line){
  				
 				$q = "UPDATE task_detail SET 
-				task_detail_descr 			 = '".$task_detail_descrs[$key]."'
+				task_detail_descr 			 = '".addslashes($task_detail_descrs[$key])."'
 			  	where task_header_id 		 = '".$_POST['task_header_id']."'
 			  	and   line          		 =   '".$lines[$key]."'
 			  	and   task_detail_type_id    = '".$task_detail_type_ids[$key]."'
@@ -280,7 +281,7 @@ class tasks_controller extends base_controller {
 				 		$q = "select max(td.line) max_line from task_detail td, task_detail_type tdt 
 				 			 where td.task_detail_type_id = tdt.task_detail_type_id
 				 			 and   td.task_header_id =  '".$_POST['task_header_id']."'
-				 			 and   tdt.task_detail_type_descr = '".$new_detail_type[$key]."'
+				 			 and   tdt.task_detail_type_descr = '".addslashes($new_detail_type[$key])."'
 				 			 
 				 			 ";
 						 
@@ -302,7 +303,7 @@ class tasks_controller extends base_controller {
 						 print_r($new_detail_descr);
 						 
 						 $q = "INSERT into task_detail (task_header_id, task_detail_type_id, line, task_detail_descr, created, modified) values (
-						 		".$_POST['task_header_id'].",".$type_id.",".$next_line.",'".$new_detail_descr."',".Time::now().",".Time::now().");";
+						 		".$_POST['task_header_id'].",".$type_id.",".$next_line.",'".addslashes($new_detail_descr)."',".Time::now().",".Time::now().");";
 												
 			  			
 		        			$resonse = DB::instance(DB_NAME)->query($q);	

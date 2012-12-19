@@ -5,21 +5,23 @@
 		
 			<div class="post" id="posttitle">
 				 <?php echo @$caption?> a Task:<br>
-				 <?php if($caption=="View"){?>
-				 <a href="/tasks/change?input=<?php echo @$tasks[task_header_id]?>">(change this task)<br><br></a>	 
+				 <br>
+				
+									 <?php if($caption=="View"){?>
+				<div id="button_left" class="submit"> <a href="/tasks/change?input=<?php echo @$tasks[task_header_id]?>">Change this Task</a></div>
 				 <?php }?>
 				 <?php if($caption=="Change"){?>
-				 <a href="/tasks/view?input=<?php echo @$tasks[task_header_id]?>">(view this task)</a>	 
+				 <div id="button_left" class="submit"><a href="/tasks/view?input=<?php echo @$tasks[task_header_id]?>">View this Task</a>	</div>
 				 <?php }?>
-				 
-				 <center> <?php if($caption!="View"){?><input type='submit' value="Save your Changes"> <?php }?> </center>
+			 
+				 <div id="button_right"> <?php if($caption!="View"){?><input type='submit' class="submit" value="Save your Changes"> <?php }?> </div>
 			  
 			</div>
 		
 				<div class='content'>
 					
 						
-						<div class='output_header'>Task ID:		    </div><div class='output'> <input type='text' name='task_header_id' 	 	value="<?php echo @$tasks[task_header_id]?> " 	readonly></div>
+						<div class='output_header'> Task ID:		    </div><div class='output'> <input type='text' name='task_header_id' 	 	value="<?php echo @$tasks[task_header_id]?> " 	readonly></div>
 						<br><br>
 					 	<div class='output_header'>Task Name:		</div><div class='output'> <input type='text' required= “required” name='task_name' 		placeholder="Task Name" 	value="<?php echo @$tasks[task_name]?> " 		<?php echo @$readonly?>></div>
 						<br><br>
@@ -82,8 +84,8 @@
 						 
 						 
 	 
-						<div class='output_header'>Description:		</div><div class='output'> <textarea id='descr'   rows='6' required='required' name='description' 		placeholder='Description' 		<?php echo @$readonly?>><?php echo @$tasks[description]?></textarea></div>
-					<br><br>
+						<div class='output_header'>Description:		</div><div class='output'> <textarea class="descr" id='descr'   rows='6' required='required' name='description' 		placeholder='Description' 		<?php echo @$readonly?>><?php echo @$tasks[description]?></textarea></div>
+					    <br><br>
 					 	<div class='output_header'><?php echo @$custom_headers[custom_01]?>:   </div><div class='output'> <input type='text'  name='custom_01' 	placeholder="<?php echo @$custom_headers[custom_01]?>" 		value="<?php echo @$tasks[custom_01]?> " 			<?php echo @$readonly?>></div>
 						<br><br>	
 						<div class='output_header'><?php echo @$custom_headers[custom_02]?>:   </div><div class='output'> <input type='text'  name='custom_02'  placeholder="<?php echo @$custom_headers[custom_02]?>" 	value="<?php echo @$tasks[custom_02]?> " 		<?php echo @$readonly?>></div>
@@ -105,9 +107,11 @@
 						<div class='output_header'><?php echo @$custom_headers[custom_10]?>:   </div><div class='output'> <input type='text'  name='custom_10' 	placeholder="<?php echo @$custom_headers[custom_10]?>" 		value="<?php echo @$tasks[custom_10]?> " 			<?php echo @$readonly?>></div>
 						<br><br>
 					
-					
 				
 					<div class="footer"'>&nbsp;&nbsp;&nbsp;&nbsp;</div>	 
+					<?php if($caption=="Add"){?>
+		 				Further detail sections can be added to this task in change mode only once this initial header setup has been submitted. 
+		 			<?php }?> 
 				
 					</div>	
 			
@@ -122,6 +126,7 @@
 			<? endforeach; ?>
 			 
 		</div>
+		 
 		<div id="newSection"></div>
 		<div>
 			 <?php if($caption=="Change"){?>
