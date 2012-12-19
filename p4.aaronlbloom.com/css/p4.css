@@ -3,8 +3,8 @@
 body { 	 
 	background-color:white;
  }
-dt {
-	font-weight: bold;
+input[type='text'] {
+	width: 500px;
 }
 #wrapper {
 	width: 900px;
@@ -12,9 +12,24 @@ dt {
 	vertical-align: center;
 	margin: 0px auto;
 }
+#side_wrapper{
+	 
+	text-align: left;
+	width: 210px;
+	float: left;
  
+}
+#descr {
+	 
+	float:left;
+	text-align: left;
+	width: 500px;
+	height:100px;
+ 	 
+ 
+}
 #header {
-	width: 800px;
+	width: 900px;
 	text-align: center;
 	font-family: "Comic Sans MS";
 	font-weight: bold;
@@ -22,10 +37,88 @@ dt {
 	background-color: white;
 	padding:1px;
 }
+
+
 #title {
-	font-size: 30px;
+	font-size: 75px;
 }
- 
+input[readonly]
+{
+    background-color:#C0C0C0;
+}
+textarea[readonly]{
+	 background-color:#C0C0C0;
+}
+#logout{
+	color: brown;
+	float: right;	
+	padding:5px;
+}
+#footer {
+	text-align: left;
+	clear: both;
+	padding-bottom: 5px;
+	padding-left:10px;
+	padding-right: 5px;
+}
+#left {
+	text-align: left;
+	width: 200px;
+	float: left;
+	background-color: white;
+}
+
+#right {
+	text-align: center;
+	width: 600px;
+	float: right;
+	background-color: white;
+	padding: 0px;
+}
+
+.roundedbox {
+	border: 1px solid black;
+	margin: 0px auto;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 30px;
+}
+.tagline {
+	color: brown;
+	font-size: 14px;
+	padding:5px;
+	border-bottom: 1px solid black;
+}
+.post {
+	width: 95%;
+	border-bottom: 1px solid black;
+	float: left;
+	text-align: left;
+	font-family: Arial;
+	padding: 10px;
+}
+.postName {
+	float: left;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 20px;
+	padding-right: 5px;
+	 
+}
+.postDate {
+	float: right;
+	font-weight:100;
+	font-size: 18px;
+	font-family:"Edwardian Script ITC";
+}
+.postMessage {
+	font-weight: 500;
+	font-size: 15px;
+	--float: left;
+}
 .output{
 	text-align:left;
 	font-size:15px;
@@ -35,7 +128,33 @@ dt {
 	font-family:Verdana;
 		
 } 
- 
+.content {
+	width: 95%;
+	 
+	float: left;
+	text-align: left;
+	font-family: Arial;
+	padding: 10px;
+}
+
+
+.output_header{
+	font-size:15px;
+	font-weight:800;
+	width:15%;
+	float:left;
+	color: black;
+	font-family:Verdana;
+		
+} 
+.bottom {
+	border-bottom: 1px solid black;
+	text-align: left; 
+	color: red;
+	width: 800px;
+	float: left;
+}
+
 .roundedbox {
 	border: 1px solid black;
 	margin: 0px auto;
